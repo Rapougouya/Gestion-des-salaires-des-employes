@@ -17,7 +17,10 @@
 
     <div class="box">
         <h1>Espace de connexion</h1>
-        {{-- {{Hash::make('azerty')}} --}}
+          {{-- {{Hash::make('qwerty')}} --}}
+        @if (Session::get('success_message'))
+            <b style="font-size: 10px; color: rgb(99, 225, 137);">{{Session::get('success_message')}}</b>
+        @endif
         @if (Session::get('error_msg'))
             <b style="font-size: 10px; color: rgb(204, 95, 95);">{{Session::get('error_msg')}}</b>
         @endif

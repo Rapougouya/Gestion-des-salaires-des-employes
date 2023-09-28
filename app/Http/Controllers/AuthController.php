@@ -21,12 +21,17 @@ class AuthController extends Controller
 
     public function handlelogin(AuthRequest $request){
 
-     
-        $credentials =$request->only(['email', 'password']);
-        if(Auth::attempt($credentials)){
+         $credentials =$request->only(['email', 'password']);
+         if(Auth::attempt($credentials)){
            return redirect()->route('dashboard');
-        }else{
+         }else{
            return redirect()->back()->with('error_msg', 'paramètre de connexion non reconnu');
-        }
+         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+      return redirect('handlelogin'); 
     }
 }

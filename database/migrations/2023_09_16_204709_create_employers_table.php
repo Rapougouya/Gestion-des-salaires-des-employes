@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->string('passsword');
-            $table->string('phone');
+            $table->string('password')->nullable();
+            $table->integer('phone');
             $table->unsignedBigInteger('departement_id');
             $table->foreign('departement_id')->references('id')->on('departements');
             $table->integer('montant_journalier')->nullable();
