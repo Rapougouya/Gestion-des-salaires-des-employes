@@ -43,8 +43,8 @@ class SendEmailToAdminAfterRegistrationNotification extends Notification
                     ->line('Bonjour')
                     ->line("Votre compte a été créé avec succès sur la plateforme de gestion de salaire et d'employé")
                     ->line('Cliquez sur le bouton ci-dessous pour valider votre compte')
-                    ->line('Saisissez le code' . $this->code . 'et renseignez le dans le formulaire qui apparaitra lorsque vous cliquerez sur le bouton ci-dessous ')
-                    ->action('Cliquez ici', route('validate-account', ['email' => $this->email]))
+                    ->line(' Saisissez le code ' . $this->code . 'et renseignez le dans le formulaire qui apparaitra lorsque vous cliquerez sur le bouton ci-dessous ')
+                    ->action('Cliquez ici', route('defineAccess', ['email' => $this->email]))
                     ->line("Merci d'utiliser nos services");
     }
 

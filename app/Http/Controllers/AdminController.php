@@ -67,13 +67,13 @@ class AdminController extends Controller
              
              return redirect()->route('administrateurs')->with('success_message', 'Administrateur ajouté avec succès');
              }catch(Exception $e){
-                 
+                 dd($e);
                  throw new Exception("Une erreur est survenue lors de l'envoi du mail");
              }
             
          }
        }catch (Exception $e){
-        // dd($e);
+         dd($e);
          return redirect()->back()->with('error_message', 'Une erreur est survenue lors de la création de cet administrateur');
     }
 }
@@ -120,6 +120,7 @@ class AdminController extends Controller
        
 
         $scheckUserExist = User::where('email', $email)->first();
+        
         if($scheckUserExist){
             return view('auth.validate-account', compact('email'));
         }else{
@@ -127,7 +128,7 @@ class AdminController extends Controller
         }
     }
 
-    public function submitDefineAccess(submitDefineAccessRequest $request){
+    public function submitDefineAccess(submitDefineAccessRequest $request, $email){
           
           try{
             $user = User::where('email', $request->email)->first();
@@ -146,7 +147,7 @@ class AdminController extends Controller
                     
                 }
 
-                return redirect()->route('login')->with('success_message','Vos accès ont été correctement défini');;
+                return redirect()->route('defineAccess', ['email' => $email])->with('success_message','Vos accès ont été correctement défini');;
             }else{
                 //404
             }

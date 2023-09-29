@@ -64,7 +64,7 @@ Route::prefix('administrateurs')->group(function(){
     Route::post('/create',   [AdminController::class, 'store'])->name('administrateurs.store');
     Route::get('/delete/{user}',  [AdminController::class, 'delete'])->name('administrateurs.delete');
 
-    Route::get('/validate-account/{email}', [AdminController::class, 'defineAccess']);
+    Route::get('/validate-account/{email}', [AdminController::class, 'defineAccess'])->name('defineAccess');
     Route::post('/validate-account/{email}', [AdminController::class, 'submitDefineAccess'])->name('submitDefineAccess');
 });
 
